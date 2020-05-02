@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>update_task</title>
+    <style>
+       body{
+           background-color:#CCFFCC;
+       }
+       input[type=text] {
+            border: 2px solid red;
+            border-radius: 4px;
+            width:500px
+     }  
+        #group{
+            margin-bottom:20px;
+        }
+    </style>
+</head>
+
+<body >
+  <h2 style="margin:20px;">Update Task</h2>
+  <form method="POST" action="\" style="margin:20px;">
+    <div class="form-group" >
+      {% csrf_token %}
+    </div>
+    <div class="form-group"  id="group" >
+      {{ form.title }}
+    </div>
+    <div class="form-group"  id="group" >
+        <span style="margin:20px">complete</span>{{ form.complete }}
+      </div>
+      <input  type="submit" value="update task" class="btn btn-primary"/>
+   </form>
+</body>
+</html>

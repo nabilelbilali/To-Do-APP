@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>delete_task</title>
+</head>
+<body style="background-color:#66FFCC;">
+    <p style="font-size: 20px;margin:20px;">Are you sure that do you want to delete <b> {{ item }} ?</b></p>
+<a href="{% url 'list' %}"  style="margin:20px ; margin-top:50px">cancel</a>
+<form method="POST" action="{% url 'delete' item.pk %}">
+    {% csrf_token %}
+    <input  type="submit"  class="btn btn-danger" value="delete"style="margin:20px"/>
+</form>
+
+</body>
+</html>

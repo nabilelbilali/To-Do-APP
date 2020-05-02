@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+   <title>list_task</title>
+   <style>
+      body{
+         background-color:#FFFFCC;
+      }
+      a:hover{
+         cursor: pointer;
+         text-decoration:underline;
+
+      }
+      div{
+         margin:30px;
+      }
+      input[type=text] {
+         border: 2px solid red;
+         border-radius: 4px;
+         width:500px
+      }
+      span{
+         margin-left:50px;
+         font-size:20px;
+         color:green
+      }
+      del{
+         margin-left:50px;
+      }
+   </style>
+</head>
+<body>
+   <h2  style="margin:20px 100px 20px 20px ;">To Do List</h2>
+<form method="POST" action="/"  style="margin:20px 100px 20px 20px ;">
+       {% csrf_token %}
+       {{ form.title }}
+       <input type="submit" value="create a task" class="btn btn-outline-warning" autocomplete="off"/>
+</form >
+
+{% for task in tasks %}
+   <div>
+   <a  class="btn btn-primary" href="{% url 'update_task' task.pk %}">Update Task</a>
+      <a class="btn btn-danger" href="{% url 'delete' task.pk %} ">Delete Task</a>
+      {% if task.complete == True %}
+            <del>{{ task }}</del> 
+      {% else %}
+         <span  >{{ task }}</span>
+      {% endif%}
+   </div>
+   
+{% endfor %}
+
+</html>
